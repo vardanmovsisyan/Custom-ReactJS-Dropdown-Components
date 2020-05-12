@@ -40,14 +40,8 @@ class DropdownMultiple extends Component{
     if(count === 0){
       return {headerTitle: nextProps.title}
     }
-    else if(count === 1){
-      return {headerTitle: `${count} ${nextProps.titleHelper}`}
-    }
-    else if(count > 1){
-      if (nextProps.titleHelperPlural) {
-        return {headerTitle: `${count} ${nextProps.titleHelperPlural}`}
-      }
-      return {headerTitle: `${count} ${nextProps.titleHelper}s`}
+    else{
+      return {headerTitle: `${nextProps.title} (${count})`}
     }
   }
 
@@ -62,7 +56,7 @@ class DropdownMultiple extends Component{
     const{listOpen, headerTitle} = this.state
     return(
       <div className="dd-wrapper">
-        <button className="dd-header" onClick={() => this.toggleList()}>
+        <button className={`dd-header ${listOpen ? 'open':''}`} onClick={() => this.toggleList()}>
             <div className="dd-header-title">{headerTitle}</div>
             {listOpen
               ? <FontAwesome name="angle-up" size="2x"/>
@@ -71,7 +65,7 @@ class DropdownMultiple extends Component{
         </button>
        {listOpen && <ul className="dd-list" onClick={e => e.stopPropagation()}>
          {list.map((item) => (
-           <button className="dd-list-item" key={item.title} onClick={() => toggleItem(item.id, item.key)}>
+           <button className="dd-list-item" key={item.title} onClick={() => toggleItem(item.id)}>
              {item.title} {item.selected && <FontAwesome name="check"/>}
            </button>
           ))}
