@@ -52,7 +52,7 @@ class DropdownMultiple extends Component{
   }
 
   render(){
-    const{list, toggleItem} = this.props
+    const{list, toggleItem, index} = this.props
     const{listOpen, headerTitle} = this.state
     return(
       <div className="dd-wrapper">
@@ -63,13 +63,13 @@ class DropdownMultiple extends Component{
               : <FontAwesome name="angle-down" size="2x"/>
             }
         </button>
-       {listOpen && <ul className="dd-list" onClick={e => e.stopPropagation()}>
-         {list.map((item) => (
-           <button className="dd-list-item" key={item.title} onClick={() => toggleItem(item.id)}>
-             {item.title} {item.selected && <FontAwesome name="check"/>}
+       {listOpen && <div className="dd-list" onClick={e => e.stopPropagation()}>
+         {list.map((item, item_index) => (
+           <button className="dd-list-item" key={item.title} onClick={() => toggleItem(item.id, index, item_index)}>
+             {item.title} {!!item.selected && <FontAwesome name="check"/>}
            </button>
           ))}
-        </ul>}
+        </div>}
       </div>
     )
   }
