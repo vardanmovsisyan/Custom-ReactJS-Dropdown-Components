@@ -2,31 +2,45 @@
   font-size: 1.6rem
   user-select: none
   position: relative
-  width: 250px
+  width: 280px
+  @media screen and (max-width: 1470px)
+    width: 100%
 
   .dd-header
+    padding: 8.5px 10px
     display: flex
     align-items: center
     justify-content: space-between
     line-height: 38px
-    border: 1px solid #2AAF9F
-    border-radius: 10px 0 0 10px
+    border: 1px solid white
+    border-radius: 5px
     position: relative
-    background-color: white
+    background-color: #263238
     outline: none
-    color: #6A678B
+    color: white
     cursor: pointer
-
+    
+    @media screen and (max-width: 1470px)
+      padding: 3.5px 13px
     &:focus
       outline: none
     &:hover
+      border: 1px solid #2AAF9F
       background-color: #2AAF9F
       color: #ffffff
     &.open
       border-bottom: 0
-      border-radius: 10px 0 0 0
+      border-radius: 5px 5px 0 0
+    &.active
+      border: 1px solid #2AAF9F
+      background-color: #2AAF9F
+      color: #ffffff
     span
       margin-right: 5px
+    svg 
+      width: 16px
+      position: absolute;
+      right: 10px;
 
   .dd-header-title
     font-weight: 300
@@ -43,29 +57,43 @@
     z-index: 2
     position: absolute
     width: 100%
-    border: 1px solid #2AAF9F
+    border: 1px solid white
     border-top: none
-    border-bottom-right-radius: 3px
-    border-bottom-left-radius: 3px
-    background-color: white
-    box-shadow: 0 5px 5px -1px #e8e8e8
+    border-bottom-right-radius: 5px
+    border-bottom-left-radius: 5px
+    background-color: #263238
     font-weight: 700
-    padding: 15px 0
-    max-height: 215px
+    padding: 0 0 10px
+    max-height: 255px
     overflow-y: auto
 
   .dd-list-item
     width: 100%
-    font-size: 1.35rem
+    font-size: 1.3rem
     padding: 8px 10px
     line-height: 1.6rem
     display: inline-block
     white-space: nowrap
     text-overflow: ellipsis
-    color: #6A678B
+    color: white
     outline: none
     cursor pointer
-
+    .checkbox
+      position: relative
+      top: 0.2rem
+      left: -0.35rem
+      display: inline-block
+      width: 1.5rem
+      height: 1.5rem
+      border: 1px solid
+      border-radius: 0.2rem
+      margin-right: 10px 
+      &.checked::after
+        content: '✔'
+        color: white
+        position: absolute
+        top: -0.3rem
+        left: .2rem
     &.selected
       color: white
       background-color: #2AAF9F
